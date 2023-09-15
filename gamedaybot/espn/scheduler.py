@@ -47,6 +47,21 @@ def scheduler():
     sched.add_job(espn_bot, 'cron', ['get_standings'], id='standings',
                   day_of_week='wed', hour=7, minute=30, start_date=ff_start_date, end_date=ff_end_date,
                   timezone=my_timezone, replace_existing=True)
+    sched.add_job(espn_bot, 'cron', ['get_scoreboard_short'], id='scoreboard_short',
+                  day_of_week='thu', hour=21, minute=45, start_date=ff_start_date, end_date=ff_end_date,
+                  timezone=my_timezone, replace_existing=True)
+    sched.add_job(espn_bot, 'cron', ['get_scoreboard_short'], id='scoreboard_short',
+                  day_of_week='sun', hour=16, minute=15, start_date=ff_start_date, end_date=ff_end_date,
+                  timezone=my_timezone, replace_existing=True)
+     sched.add_job(espn_bot, 'cron', ['get_projected_scoreboard'], id='projected_scoreboard',
+                  day_of_week='thu', hour=21, minute=45, start_date=ff_start_date, end_date=ff_end_date,
+                  timezone=my_timezone, replace_existing=True)
+    sched.add_job(espn_bot, 'cron', ['get_projected_scoreboard'], id='projected_scoreboard',
+                  day_of_week='sun', hour=16, minute=15, start_date=ff_start_date, end_date=ff_end_date,
+                  timezone=my_timezone, replace_existing=True)
+    sched.add_job(espn_bot, 'cron', ['get_matchups'], id='matchups',
+                  day_of_week='thu', hour=21, minute=15, start_date=ff_start_date, end_date=ff_end_date,
+                  timezone=my_timezone, replace_existing=True)
     if data['daily_waiver']:
         sched.add_job(
             espn_bot, 'cron', ['get_waiver_report'],
